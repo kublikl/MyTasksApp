@@ -1,19 +1,18 @@
 import express from "express";
 import bodyParser from "body-parser";
+import config from "./config.js";
+import apiRouter from "./routes/api.js";
 
 
 const app = express();
-const port = 4000;
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+//routes
+app.use('/', apiRouter);
 
-app.get('/', function(req, res){
-  res.send('Server is running');
-});
-
-app.listen(port, () => {
-  console.log(`API is running at http://localhost:${port}`);
+app.listen(config.port, () => {
+  console.log(`API is running at http://localhost:${config.port}`);
 });
