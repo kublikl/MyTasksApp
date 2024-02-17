@@ -1,8 +1,11 @@
+import Header from './components/Header'
+
 const App = () => {
   return (
-    <div>  
+    <div  className = "app">
+    <Header listName = {'Very important list'}/>
     </div>
   )
 }
 
-export default App;
+export default App
