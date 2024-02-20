@@ -6,11 +6,13 @@ import apiRouter from "./routes/api.js";
 
 const app = express();
 
+
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-//routes
+// get all routes
+
 app.use('/', apiRouter);
 
 app.listen(config.port, () => {
