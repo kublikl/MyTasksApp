@@ -36,8 +36,19 @@ body {
   justify-content: space-between;
 }
 
+.tick {
+  padding: 10px;
+}
 
-.button-container {
+.tick path {
+  fill:none;
+  stroke: #000;
+  stroke-miterlimit: 10;
+  stroke-width: 32px
+}
+
+
+.button-container, .info-container {
   display: flex;
   align-items: center;
 }
