@@ -49,6 +49,18 @@ router.put('/todos/:id', async (req, res) => {
     console.error(err)
   }
 })
+
+// delete a todo
+router.delete('/todos/:id', async (req, res) => {
+  const { id } = req.params
+  try {
+    const deleteToDo = await db.query('DELETE FROM todos WHERE id = $1;', [id])
+    res.json(deleteToDo)
+  } catch (err) {
+    console.error(err)
+  }
+})
+
 //module.exports = router; CommonJS
 
 export default router; // ES6 (ECMAScript)
