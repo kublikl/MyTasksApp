@@ -10,6 +10,7 @@ const App = () => {
     try{
       const response = await fetch(`http://localhost:4000/todos/${userEmail}`)
       const json = await response.json()
+      console.log("Response from server:", json);
       setTasks(json)
     } catch (err) {
       console.error(err)
@@ -17,6 +18,9 @@ const App = () => {
   }
 
   useEffect(() => getData, [])
+  /*useEffect(() => {
+    getData();
+  }, []);*/
 
   console.log(tasks)
 
@@ -26,8 +30,8 @@ const App = () => {
 
   return (
     <div  className = "app">
-    <Header listName = {'Very important list'}/>
-    {sortedTasks?.map((task) => <ListItem key={task.id} task={task} />)}
+    <Header listName = {'Very important list'} getData={getData} />
+    {sortedTasks?.map((task) => <ListItem key={task.id} task={task} getData={getData} />)}
     </div>
   )
 }
