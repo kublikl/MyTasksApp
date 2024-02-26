@@ -20,10 +20,12 @@ const App = () => {
     }
   }
 
-  useEffect(() => getData, [])
-  /*useEffect(() => {
-    getData();
-  }, []);*/
+  
+  useEffect(() => {
+    if (authToken) {
+      getData()
+    }}
+  , [])
 
   console.log(tasks)
 
