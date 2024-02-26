@@ -4,10 +4,23 @@ import { useState } from 'react'
 const Auth = () => {
   const [isLogIn, setIsLogin] = useState(true)
   const [error, setError] = useState(null)
+  const [email, setEmail] = useState(null)
+  const [password, setPassword] = useState(null)
+  const [confirmPassword, setConfirmPassword] = useState(null)
 
   const viewLogin = (status) => {
     setError(null)
     setIsLogin(status)
+  }
+
+  const handleSubmit = async (e, endpoint) => {
+    e.preventDefault()
+    if (!isLogIn && password !== confirmPassword) {
+      setError('Make sure passwords match!')
+      return
+    }
+
+    await fetch(`${process.env.REACT_APP_SERVERURL}/${endpoint}`)
   }
 
   return (
@@ -18,7 +31,7 @@ const Auth = () => {
           <input type="email" placeholder="email" />
           <input type="password" placeholder="password" />
           {!isLogIn && <input type="password" placeholder="confirm password" />}
-          <input type="submit" className="create" />
+          <input type="submit" className="create" onClick={(e) => handleSubmit(e, isLogIn ? 'login' : 'signup')} />
           {error && <p>{error}</p>}
         </form>
         <div className="auth-options">
