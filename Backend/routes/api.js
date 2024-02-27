@@ -61,6 +61,27 @@ router.delete('/todos/:id', async (req, res) => {
   }
 })
 
+// signup
+router.post('/signup', async (req, res) => {
+  const { email, password } = req.body
+
+  try {
+    
+  } catch(err) {
+  console.error(err)
+  }
+})
+
+// login
+router.post('/login', async (req, res) => {
+  const { email, password } = req.body
+  try {
+    
+  } catch(err) {
+  console.error(err)
+  }
+})
+
 //module.exports = router; CommonJS
 
 export default router; // ES6 (ECMAScript)
