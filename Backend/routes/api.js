@@ -2,9 +2,10 @@ import express from "express";
 const router = express.Router();
 import db from "../db.js";
 import { v4 as uuidv4 } from "uuid";
-//import cors from "cors";
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
-//router.use(cors())
+
 
 router.use(express.json())
 
@@ -61,14 +62,25 @@ router.delete('/todos/:id', async (req, res) => {
   }
 })
 
-// signup
+// signup 
 router.post('/signup', async (req, res) => {
   const { email, password } = req.body
+  const salt = bcrypt.genSaltSync(10)
+  const hashedPassword = bcrypt.hashSync(password, salt)
 
   try {
+    const signUp = await db.query(`INSERT INTO users (email, hashed_password) VALUES($1, $2)`,
+      [email, hashedPassword])
+
+    const token = jwt.sign({ email }, 'secret', { expiresIn: '1hr' })
     
+    res.json({ email, token })
   } catch(err) {
-  console.error(err)
+    console.error(err)
+    if (err) {
+      res.json({ detail: err.detail})
+    }
+  
   }
 })
 

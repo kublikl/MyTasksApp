@@ -4,6 +4,7 @@ import config from "./config.js";
 import apiRouter from "./routes/api.js";
 import cors from "cors";
 
+
 const app = express();
 
 app.use(cors())
