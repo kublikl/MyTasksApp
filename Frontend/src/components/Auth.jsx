@@ -1,7 +1,9 @@
 import { useState } from 'react'
+import { useCookies} from 'react-cookie'
 
 
 const Auth = () => {
+  const [cookies, setCookie, removeCookie] = useCookies(null)
   const [isLogIn, setIsLogin] = useState(true)
   const [error, setError] = useState(null)
   const [email, setEmail] = useState(null)
@@ -32,7 +34,13 @@ const Auth = () => {
 
     if (data.detail) {
       setError(data.detail)
+    } else {
+      setCookie('Email', data.email)
+      setCookie('AuthToken', data.token)
+
+      window.location.reload()
     }
+  
   } 
   return (
     <div className="auth-container">
