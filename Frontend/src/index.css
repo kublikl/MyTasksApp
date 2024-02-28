@@ -205,3 +205,16 @@ input {
   padding: 10px;
   color: rgb(35,38, 47);
 }
+
+.copyright {
+  font-size: 13px;
+  margin: 10px;
+  color: rgb(114, 114, 144);
+}
+
+.user-email {
+  float: right;
+  font-size: 13px;
+  margin: 10px;
+  color: rgb(114, 114, 144);
+}
