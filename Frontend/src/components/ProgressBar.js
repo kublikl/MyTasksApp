@@ -8,6 +8,7 @@ const ProgressBar = ({ progress }) => {
 
   const randomColor = colors[Math.floor(Math.random() * colors.length)]
 
+   console.log(colors.length)
   return (
     <div className="outer-bar">
       <div
