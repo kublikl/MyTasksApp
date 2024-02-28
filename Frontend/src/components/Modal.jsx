@@ -35,7 +35,7 @@ const Modal = ({ mode, setShowModal, getData, task}) => {
     e.preventDefault()
     try {
       const response = await fetch(`${process.env.REACT_APP_SERVERURL}/todos/${task.id}`, {
-        method: 'PUT',
+        method: "PUT",
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       })
