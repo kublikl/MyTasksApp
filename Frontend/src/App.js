@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import Header from './components/Header'
 import ListItem from './components/ListItem'
+import Title from './components/Title'
+import Footer from "./components/Footer";
 import Auth from './components/Auth'
 import { useCookies } from 'react-cookie'
 
@@ -36,15 +38,19 @@ const App = () => {
 
 
   return (
-    <div  className = "app">
-    {!authToken && <Auth />}
-    {authToken &&
-    <>
-    <Header listName = {'Very important list'} getData={getData} />
-    <p className="user-email">Welcome back {userEmail}</p>
-    {sortedTasks?.map((task) => <ListItem key={task.id} task={task} getData={getData} />)}
-    </>}
-    <p className="copyright">© Future Job</p>
+    <div>
+      <Title />
+      <div  className = "app">
+      {!authToken && <Auth />}
+      {authToken &&
+      <>
+      <Header listName = {'Very important list'} getData={getData} />
+      <p className="user-email">Welcome back {userEmail}</p>
+      {sortedTasks?.map((task) => <ListItem key={task.id} task={task} getData={getData} />)}
+      </>}
+      
+      </div>
+      <Footer />
     </div>
   )
 }
