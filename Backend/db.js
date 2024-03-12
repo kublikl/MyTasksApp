@@ -11,7 +11,7 @@ const db = new pg.Client({
   host: process.env.HOST,
   port: process.env.DBPORT,
   database: 'StickyNotes',
-  ssl: false,
+  ssl: true,
 });
 db.connect();
 
