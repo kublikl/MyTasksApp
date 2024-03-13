@@ -3,7 +3,7 @@ import React from "react";
 function Title() {
   return (
     <div className="title">
-      <h1>StickyNotes</h1>
+      <h1>My Tasks</h1>
     </div>
   );
 }
